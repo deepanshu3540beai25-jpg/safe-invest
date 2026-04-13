@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>InvestSafe — Face Your Fear, Fund Your Future</title>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Mono:ital,wght@0,300;0,400;1,300&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="style.css"/>
+</head>
+<body>
+
+<!-- TICKER -->
+<div class="ticker-wrap">
+  <div class="ticker-inner" id="ticker">
+    <span class="ticker-item"><span class="t-name">NIFTY50</span><span class="t-val up">▲ 22,418.65</span></span>
+    <span class="ticker-item"><span class="t-name">SENSEX</span><span class="t-val up">▲ 73,847.15</span></span>
+    <span class="ticker-item"><span class="t-name">GOLD</span><span class="t-val up">▲ ₹72,300/10g</span></span>
+    <span class="ticker-item"><span class="t-name">BTC/INR</span><span class="t-val down">▼ ₹68,14,000</span></span>
+    <span class="ticker-item"><span class="t-name">RELIANCE</span><span class="t-val up">▲ ₹2,943.10</span></span>
+    <span class="ticker-item"><span class="t-name">INFY</span><span class="t-val down">▼ ₹1,412.05</span></span>
+    <span class="ticker-item"><span class="t-name">TCS</span><span class="t-val up">▲ ₹3,802.50</span></span>
+    <span class="ticker-item"><span class="t-name">NIFTY50</span><span class="t-val up">▲ 22,418.65</span></span>
+    <span class="ticker-item"><span class="t-name">SENSEX</span><span class="t-val up">▲ 73,847.15</span></span>
+    <span class="ticker-item"><span class="t-name">GOLD</span><span class="t-val up">▲ ₹72,300/10g</span></span>
+    <span class="ticker-item"><span class="t-name">BTC/INR</span><span class="t-val down">▼ ₹68,14,000</span></span>
+    <span class="ticker-item"><span class="t-name">RELIANCE</span><span class="t-val up">▲ ₹2,943.10</span></span>
+    <span class="ticker-item"><span class="t-name">INFY</span><span class="t-val down">▼ ₹1,412.05</span></span>
+    <span class="ticker-item"><span class="t-name">TCS</span><span class="t-val up">▲ ₹3,802.50</span></span>
+  </div>
+</div>
+
+<!-- HERO -->
+<header>
+  <div class="badge"><span class="badge-dot"></span> SafeVest </div>
+  <h1>Invest<span class="hi">Safe</span><br/>Fear <span class="lo">Less</span>, Grow <span class="hi">More</span></h1>
+  <p class="tagline">Contextualize risk. Simulate losses. Build real investing confidence — before touching a single rupee.</p>
+
+  <!-- NAV PILL BUTTONS -->
+  <div class="hero-pills">
+    <button class="pill nav-pill pill-quiz-btn" data-target="cardQuiz">
+      <span class="icon">🧩</span> Investor Quiz
+    </button>
+    <button class="pill nav-pill" data-target="cardSandbox">
+      <span class="icon">🎮</span> Risk Sandbox
+    </button>
+    <button class="pill nav-pill" data-target="cardAi">
+      <span class="icon">🤖</span> AI Explainer
+    </button>
+    <button class="pill nav-pill" data-target="cardMeter">
+      <span class="icon">🎯</span> Loss Probability Meter
+    </button>
+    <button class="pill nav-pill" data-target="cardOutcome">
+      <span class="icon">📊</span> Portfolio Simulator
+    </button>
+    <button class="pill nav-pill" data-target="cardPanic">
+      <span class="icon">🧠</span> Emotional Alerts
+    </button>
+    <button class="pill nav-pill" data-target="cardWhatif">
+      <span class="icon">⏳</span> What If?
+    </button>
+  </div>
+</header>
+
+<section class="quiz-hero-section" id="quizHeroSection">
+  <div class="quiz-hero-inner">
+  <div class="card card-quiz" id="cardQuiz">
+    <div class="card-label">🧩 Module 07 — Investor Personality Quiz</div>
+    <h2>What Kind of Investor Are You?</h2>
+
+    <!-- QUIZ SCREEN -->
+    <div id="quizScreen">
+      <div class="quiz-progress-wrap">
+        <div class="quiz-progress-track">
+          <div class="quiz-progress-fill" id="quizProgressFill" style="width:0%"></div>
+        </div>
+        <div class="quiz-step-label" id="quizStepLabel">Q 1 / 8</div>
+      </div>
+
+      <div id="quizQuestionBlock" class="quiz-question-block"></div>
+
+      <div class="quiz-nav">
+        <button class="quiz-nav-btn" id="quizPrevBtn" onclick="quizPrev()" disabled>← Back</button>
+        <button class="quiz-next-btn" id="quizNextBtn" onclick="quizNext()">Next →</button>
+      </div>
+    </div>
+
+    <!-- RESULT SCREEN (hidden) -->
+    <div id="quizResultScreen" style="display:none">
+      <div class="quiz-result" id="quizResult"></div>
+    </div>
+  </div>
+  </div>
+</section>
+
+<main>
+
+  <!-- ══ RISK SIMULATION SANDBOX ══ -->
+  <div class="card card-sandbox" id="cardSandbox">
+    <div class="card-loading" id="loadSandbox"><div class="spinner"></div></div>
+    <div class="card-label">🎮 Module 01 — Risk Simulation Sandbox</div>
+    <h2>Simulate Your Portfolio</h2>
+
+    <div class="asset-row">
+      <div class="asset-item"><div class="asset-name">Equity (Stocks)</div><div class="asset-val" id="eqVal">₹20,000</div><div class="asset-change up" id="eqChange">+0.00%</div></div>
+      <div class="asset-item"><div class="asset-name">Mutual Funds</div><div class="asset-val" id="mfVal">₹15,000</div><div class="asset-change up" id="mfChange">+0.00%</div></div>
+      <div class="asset-item"><div class="asset-name">Gold ETF</div><div class="asset-val" id="goldVal">₹10,000</div><div class="asset-change up" id="goldChange">+0.00%</div></div>
+      <div class="asset-item"><div class="asset-name">Fixed Deposit</div><div class="asset-val" id="fdVal">₹5,000</div><div class="asset-change up" id="fdChange">+0.00%</div></div>
+    </div>
+
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:24px;">
+      <div>
+        <div class="slider-group">
+          <div class="slider-label"><span>Investment Amount</span><span id="amtLabel">₹50,000</span></div>
+          <input type="range" id="amtSlider" min="5000" max="500000" step="5000" value="50000"/>
+        </div>
+        <div class="slider-group">
+          <div class="slider-label"><span>Time Horizon</span><span id="horizLabel">3 Years</span></div>
+          <input type="range" id="horizSlider" min="1" max="20" step="1" value="3"/>
+        </div>
+        <div class="slider-group">
+          <div class="slider-label"><span>Market Volatility</span><span id="volLabel">Medium</span></div>
+          <input type="range" id="volSlider" min="1" max="3" step="1" value="2"/>
+        </div>
+        <button class="sim-btn" id="simBtn" onclick="runSimulation()">▶ Run Simulation</button>
+      </div>
+      <div>
+        <div class="chart-wrap"><canvas id="simChart"></canvas></div>
+        <div class="chart-note" id="chartNote">Awaiting simulation…</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══ LOSS PROBABILITY METER ══ -->
+  <div class="card card-meter" id="cardMeter">
+    <div class="card-loading" id="loadMeter"><div class="spinner"></div></div>
+    <div class="card-label">🎯 Module 02 — Loss Probability Meter</div>
+    <h2>Your Risk Score</h2>
+
+    <div class="meter-ring">
+      <svg viewBox="0 0 140 140" width="140" height="140">
+        <circle class="meter-track" cx="70" cy="70" r="60"/>
+        <circle class="meter-fill" id="meterFill" cx="70" cy="70" r="60" stroke="var(--accent)"/>
+      </svg>
+      <div class="meter-text">
+        <div class="meter-pct" id="meterPct">35%</div>
+        <div class="meter-sub">Loss Probability</div>
+      </div>
+    </div>
+
+    <div class="risk-levels">
+      <div class="risk-lvl" id="rlLow" onclick="setRisk('low')">
+        <div class="rl-icon">🌿</div>
+        <div class="rl-name" style="color:var(--accent)">Low</div>
+        <div style="font-size:10px;color:var(--muted)">FD, Bonds</div>
+      </div>
+      <div class="risk-lvl active-med" id="rlMed" onclick="setRisk('med')">
+        <div class="rl-icon">⚖️</div>
+        <div class="rl-name">Medium</div>
+        <div style="font-size:10px;color:var(--muted)">Index Funds</div>
+      </div>
+      <div class="risk-lvl" id="rlHigh" onclick="setRisk('high')">
+        <div class="rl-icon">🔥</div>
+        <div class="rl-name">High</div>
+        <div style="font-size:10px;color:var(--muted)">Stocks, Crypto</div>
+      </div>
+    </div>
+
+    <div class="fear-bar-wrap">
+      <div class="fear-title">Fear Index</div>
+      <div class="fear-track"><div class="fear-fill" id="fearFill" style="width:40%"></div></div>
+      <div class="fear-labels"><span>Fearless</span><span>Neutral</span><span>Paralyzed</span></div>
+    </div>
+  </div>
+
+  <!-- ══ AI PORTFOLIO EXPLAINER ══ -->
+  <div class="card card-ai" id="cardAi">
+    <div class="card-label">🤖 Module 03 — AI Portfolio Explainer</div>
+    <h2>Portfolio Breakdown</h2>
+
+    <div class="portfolio-bars" id="portBars">
+      <div class="pbar-row"><span>Equity</span><div class="pbar-track"><div class="pbar-fill" id="pb-equity" style="width:40%;background:var(--accent);"></div></div><span class="pbar-pct" id="pp-equity">40%</span></div>
+      <div class="pbar-row"><span>Mutual Funds</span><div class="pbar-track"><div class="pbar-fill" id="pb-mf" style="width:30%;background:var(--accent3);"></div></div><span class="pbar-pct" id="pp-mf">30%</span></div>
+      <div class="pbar-row"><span>Gold ETF</span><div class="pbar-track"><div class="pbar-fill" id="pb-gold" style="width:20%;background:#c084fc;"></div></div><span class="pbar-pct" id="pp-gold">20%</span></div>
+      <div class="pbar-row"><span>Fixed Deposit</span><div class="pbar-track"><div class="pbar-fill" id="pb-fd" style="width:10%;background:var(--muted);"></div></div><span class="pbar-pct" id="pp-fd">10%</span></div>
+    </div>
+
+    <div class="ai-bubble">
+      <span id="aiText">Click "Run Simulation" to get your AI-powered portfolio analysis…</span><span class="ai-cursor"></span>
+    </div>
+  </div>
+
+  <!-- ══ SIMULATION OUTCOME ══ -->
+  <div class="card card-outcome" id="cardOutcome">
+    <div class="card-label">📊 Module 04 — Projected Outcomes</div>
+    <h2>What Could Happen?</h2>
+    <div class="outcome-grid">
+      <div class="out-stat">
+        <div class="out-label">Best Case 🚀</div>
+        <div class="out-val up" id="bestVal">₹68,250</div>
+        <div class="out-delta up" id="bestDelta">+36.5%</div>
+      </div>
+      <div class="out-stat">
+        <div class="out-label">Expected Case 📈</div>
+        <div class="out-val" id="expVal">₹57,500</div>
+        <div class="out-delta up" id="expDelta">+15.0%</div>
+      </div>
+      <div class="out-stat">
+        <div class="out-label">Bad Case 📉</div>
+        <div class="out-val down" id="badVal">₹43,000</div>
+        <div class="out-delta down" id="badDelta">−14.0%</div>
+      </div>
+      <div class="out-stat">
+        <div class="out-label">Worst Case 💀</div>
+        <div class="out-val down" id="worstVal">₹31,500</div>
+        <div class="out-delta down" id="worstDelta">−37.0%</div>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- ══ EMOTIONAL ALERT SYSTEM ══ -->
+  <div class="card card-panic" id="cardPanic">
+    <div class="card-label">🧠 Module 05 — Emotional Alert System · <span style="color:var(--accent)">POST /api/panic-alert</span></div>
+    <h2>Don't Panic — Let Data Calm You</h2>
+
+    <div class="panic-input-row">
+      <div class="panic-input-group">
+        <label class="panic-label">Market just dropped by</label>
+        <div class="panic-input-wrap">
+          <input type="number" id="dropInput" min="1" max="70" value="15" placeholder="15"/>
+          <span class="panic-unit">%</span>
+        </div>
+      </div>
+      <div class="panic-input-group">
+        <label class="panic-label">Your investment</label>
+        <div class="panic-input-wrap">
+          <span class="panic-unit" style="left:12px;right:auto">₹</span>
+          <input type="number" id="panicAmt" value="50000" style="padding-left:28px"/>
+        </div>
+      </div>
+      <button class="sim-btn" id="panicBtn" onclick="runPanicAlert()" style="align-self:flex-end">
+        🧘 Calm Me Down
+      </button>
+    </div>
+
+    <!-- ADVISOR RESPONSE (hidden until triggered) -->
+    <div id="panicResult" class="panic-result" style="display:none">
+
+      <!-- Severity banner -->
+      <div class="panic-banner" id="panicBanner">
+        <div class="panic-icon" id="panicIcon">😰</div>
+        <div>
+          <div class="panic-headline" id="panicHeadline">Loading…</div>
+          <div class="panic-tone" id="panicTone"></div>
+        </div>
+      </div>
+
+      <!-- Action advice -->
+      <div class="panic-action-box" id="panicAction"></div>
+
+      <!-- Recovery stats row -->
+      <div class="panic-stats-row" id="panicStatsRow">
+        <div class="panic-stat">
+          <div class="ps-label">Avg. Recovery</div>
+          <div class="ps-val" id="psAvg">—</div>
+          <div class="ps-sub">months</div>
+        </div>
+        <div class="panic-stat">
+          <div class="ps-label">Fastest Recovery</div>
+          <div class="ps-val up" id="psBest">—</div>
+          <div class="ps-sub">months</div>
+        </div>
+        <div class="panic-stat">
+          <div class="ps-label">Slowest Recovery</div>
+          <div class="ps-val down" id="psWorst">—</div>
+          <div class="ps-sub">months</div>
+        </div>
+        <div class="panic-stat">
+          <div class="ps-label">Paper Loss</div>
+          <div class="ps-val down" id="psPaperLoss">—</div>
+          <div class="ps-sub">if you sell now</div>
+        </div>
+      </div>
+
+      <!-- Crash history timeline -->
+      <div class="crash-timeline" id="crashTimeline"></div>
+    </div>
+  </div>
+
+  <!-- ══ WHAT IF SIMULATOR ══ -->
+  <div class="card card-whatif" id="cardWhatif">
+    <div class="card-label">⏳ Module 06 — "What If I Invested Earlier?" · <span style="color:var(--accent)">POST /api/what-if</span></div>
+    <h2>Discover Your Missed Wealth</h2>
+
+    <div class="whatif-controls">
+      <div class="whatif-field">
+        <label class="panic-label">Choose Asset</label>
+        <div class="asset-selector" id="assetSelector">
+          <button class="asset-btn active" data-asset="NIFTY50" onclick="selectAsset(this)">NIFTY 50</button>
+          <button class="asset-btn" data-asset="SENSEX" onclick="selectAsset(this)">SENSEX</button>
+          <button class="asset-btn" data-asset="GOLD" onclick="selectAsset(this)">GOLD</button>
+          <button class="asset-btn" data-asset="BTC" onclick="selectAsset(this)">BTC</button>
+          <button class="asset-btn" data-asset="RELIANCE" onclick="selectAsset(this)">RELIANCE</button>
+          <button class="asset-btn" data-asset="INFOSYS" onclick="selectAsset(this)">INFOSYS</button>
+        </div>
+      </div>
+
+      <div class="whatif-row">
+        <div class="whatif-field">
+          <label class="panic-label">If I invested</label>
+          <div class="panic-input-wrap">
+            <span class="panic-unit" style="left:12px;right:auto">₹</span>
+            <input type="number" id="wiAmount" value="10000" style="padding-left:28px"/>
+          </div>
+        </div>
+        <div class="whatif-field">
+          <label class="panic-label">In the year</label>
+          <div class="year-slider-wrap">
+            <input type="range" id="wiYear" min="2010" max="2023" step="1" value="2020"/>
+            <div class="year-display" id="wiYearLabel">2020</div>
+          </div>
+        </div>
+        <button class="sim-btn" id="wiBtn" onclick="runWhatIf()" style="align-self:flex-end">
+          ⏳ Show Me
+        </button>
+      </div>
+    </div>
+
+    <!-- RESULT (hidden until triggered) -->
+    <div id="wiResult" class="wi-result" style="display:none">
+
+      <!-- Big number reveal -->
+      <div class="wi-reveal">
+        <div class="wi-reveal-left">
+          <div class="wi-label">You invested</div>
+          <div class="wi-amount" id="wiInvested">₹10,000</div>
+          <div class="wi-year-tag" id="wiYearTag">in 2020</div>
+        </div>
+        <div class="wi-arrow">→</div>
+        <div class="wi-reveal-right">
+          <div class="wi-label">Would be worth today</div>
+          <div class="wi-big-number up" id="wiFinalVal">₹—</div>
+          <div class="wi-cagr" id="wiCagr"></div>
+        </div>
+      </div>
+
+      <!-- Multiple badge -->
+      <div class="wi-multiple-row">
+        <div class="wi-multiple-badge" id="wiMultipleBadge">—× growth</div>
+        <div class="wi-profit up" id="wiProfit"></div>
+      </div>
+
+      <!-- Confidence message -->
+      <div class="wi-confidence" id="wiConfidence"></div>
+
+      <!-- Year-by-year growth chart -->
+      <div class="wi-chart-label">Year-by-year growth</div>
+      <div class="chart-wrap" style="height:140px; margin-top:8px">
+        <canvas id="wiChart"></canvas>
+      </div>
+
+      <!-- Regret analysis -->
+      <div class="regret-section" id="regretSection"></div>
+    </div>
+  </div>
+
+  <!-- ══ INVESTOR QUIZ ══ -->
+</main>
+
+<footer>INVESTSAFE  · CONTEXTUALIZE RISK · CONQUER FEAR · FUND YOUR FUTURE</footer>
+
+<!-- API Status Badge -->
+<div class="api-status">
+  <div class="api-dot" id="apiDot"></div>
+  <span id="apiLabel">connecting…</span>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
